@@ -1,0 +1,23 @@
+<%= render 'form', restaurant: @restaurant %>
+
+
+
+<div>
+  <%= link_to "create a review", new_restaurant_review_path(@restaurant)%>
+  <%= link_to "edit this restaurant", edit_restaurant_path(@restaurant) %>
+  <%= link_to "Back to restaurant", restaurants_path %>
+  <%= button_to "Destroy this restaurant", @restaurant, method: :delete %>
+</div>
+
+
+<p><strong>Reviews</strong></p>
+
+  <ul class="list-group">
+    <% @restaurant.reviews.each do |review|%>
+      <p>
+        <%= review.content%>
+      </p>
+      <% link_to 'supprimer cette review', review_path(review), data: { turbo_method: :delete } %>
+    <% end %>
+  </ul>
+<br>
